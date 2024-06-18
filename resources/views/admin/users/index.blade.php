@@ -1,5 +1,7 @@
 @extends('admin.layouts.template')
 
+@section('title', 'Usuários')
+
 @section('content')
 <h1>Usuários</h1>
 
