@@ -31,5 +31,7 @@
             @endforelse
         </tbody>
     </table>
+
+    {{ $users->links() }} <!-- esse comando faz todo o css tailwind da paginação -->
 </body>
 </html>
