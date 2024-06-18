@@ -10,9 +10,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        $user = User::first();
-        return view('admin.users.index', [
-            'user' => $user
-        ]);
+        $users = User::paginate(20);  
+        //ao invés de mostrar todos os dados de uma vez utilizando o comando User::all();
+        //com o paginate é possível definir quantos usuários serão mostrados por página 
+        
+        return view('admin.users.index', compact('users'));
     }
 }
