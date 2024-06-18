@@ -9,6 +9,9 @@ class UserController extends Controller
 {
     public function index()
     {
-        return 'UserControler@index';
+        $user = User::first();
+        return view('admin.users.index', [
+            'user' => $user
+        ]);
     }
 }
