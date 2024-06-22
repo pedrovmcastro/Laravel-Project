@@ -14,6 +14,6 @@ class UserController extends Controller
         //ao invés de mostrar todos os dados de uma vez utilizando o comando User::all();
         //com o paginate é possível definir quantos usuários serão mostrados por página 
         
-        return view('admin.users.index', compact('users'));
+        return view('project.admin.users.index', compact('users'));
     }
 }
