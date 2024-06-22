@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string('nome', 100);
-            $table->decimal('price', 8, 2);
-            $table->integer('stock')->default(0);
+            $table->string('name', 100); // no max 100 digitos
+            $table->text('description');
+            $table->decimal('price', 8, 2); // no max 8 digitos, 2 digitos apos a virgula
+            $table->string('thumbnail')->nullable();
+            //$table->integer('stock')->default(0);
+            $table->timestamps(); // datetime da criacao
         });
     }
 
