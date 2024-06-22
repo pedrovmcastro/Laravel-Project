@@ -166,11 +166,14 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
-          <h4>About</h4>
-          <p class="text-body-secondary">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+          <h4>Sobre</h4>
+          <p class="text-body-secondary">
+            Nosso sistema de gerenciamento de cantinas facilita a venda de lanches e bebidas. Com ele, você pode gerenciar seu estoque, acompanhar vendas em tempo real e oferecer uma experiência de compra rápida e eficiente. 
+            Explore mais sobre nossos recursos e entre em contato através das redes sociais para saber mais!
+          </p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
-          <h4>Contact</h4>
+          <h4>Admin</h4>
           <ul class="list-unstyled">
             @guest 
             <li><a href="{{Route("login")}}" class="text-white">Login</a></li>
@@ -192,7 +195,7 @@
     <div class="container">
       <a href="#" class="navbar-brand d-flex align-items-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        <strong>Album</strong>
+        <strong>Produtos</strong>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -204,16 +207,21 @@
 <main>
 
   <section class="py-5 text-center container">
+    <h1 class="fw-light">Sistema de Gerenciamento de Produtos</h1>
+    <!--
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">Album example</h1>
+        
         <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
         <p>
           <a href="#" class="btn btn-primary my-2">Main call to action</a>
           <a href="#" class="btn btn-secondary my-2">Secondary action</a>
         </p>
+      
       </div>
     </div>
+    -->
   </section>
 
   <div class="album py-5 bg-body-tertiary">
