@@ -72,6 +72,30 @@ class ProductSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'name' => 'Cone de Doce de Leite',
+                'description' => 'conezinho',
+                'price' => 4.75,
+                'thumbnail' => 'cone.jpg',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+  	        [
+                'name' => 'Monster',
+                'description' => 'Energético',
+                'price' => 11.00,
+                'thumbnail' => 'monster.jpg',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+  	        [
+                'name' => 'Torcida Bacon',
+                'description' => 'Salgadinho sabor Bacon',
+                'price' => 4.00,
+                'thumbnail' => 'torcida.jpg',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }
