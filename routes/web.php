@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\UserController;      # adiciona os controllers
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -23,10 +24,14 @@ require __DIR__.'/auth.php';
 Route::get('/', function () {
     $products = Product::all(); // Pega todos os produtos do banco de dados
     return view('project.welcome', ['products' => $products]); //['products' => $products] = compact('products')
-});
+})->name('welcome');
 
 Route::get('/exit', [AuthenticatedSessionController::class, 'destroy'])->name('exit');
 
-Route::get('/create', function () {
-    return view('project.create');
+Route::get('/products/create', function () {
+    return view('project.admin.products.create');
 })->middleware(['auth', 'verified'])->name('product.create');
+
+Route::post('/products', [ProductController::class, 'store'])->middleware(['auth', 'verified'])->name('product.store');
+
+Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->middleware(['auth', 'verified'])->name('product.edit');
