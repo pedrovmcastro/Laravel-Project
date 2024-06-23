@@ -26,7 +26,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Pão de queijo',
-                'description' => '',
+                'description' => 'Pão de queijo congelado tradicional.',
                 'price' => 4.00,
                 'thumbnail' => 'paoDeQueijo.jpg',
                 'created_at' => now(),
@@ -34,7 +34,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Salgado',
-                'description' => 'Coxinha de frango, Risole de carne, Esfiha de Frango, Esfiha de Carne, Esfiha de Presunto e Queijo, Pão de Batata c/ Requeijão',
+                'description' => 'Opções: Coxinha de frango, Risole de carne, Esfiha de Frango, Esfiha de Carne, Esfiha de Presunto e Queijo, Pão de Batata c/ Requeijão',
                 'price' => 7.00,
                 'thumbnail' => 'salgado.jpg',
                 'created_at' => now(),
@@ -42,7 +42,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Sanduíche Natural',
-                'description' => 'Frango, maionese, cenoura, milho, passas e pão integral',
+                'description' => 'Frango, maionese, tomate, alface, cenoura e pão integral',
                 'price' => 10.00,
                 'thumbnail' => 'sanduicheNatural.jpg',
                 'created_at' => now(),
@@ -58,7 +58,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Mini Pizza',
-                'description' => 'Calabresa, Portuguesa, Quatro-Queijos e Frango com Catupiry',
+                'description' => 'Sabores: Calabresa, Portuguesa, Quatro-Queijos e Frango com Catupiry',
                 'price' => 10.00,
                 'thumbnail' => 'miniPizza.jpg',
                 'created_at' => now(),
@@ -68,13 +68,13 @@ class ProductSeeder extends Seeder
                 'name' => 'Coca-Cola',
                 'description' => 'Coquinha 200ml',
                 'price' => 3.50,
-                'thumbnail' => 'coquinha.jpg',
+                'thumbnail' => 'coquinha.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'name' => 'Cone de Doce de Leite',
-                'description' => 'conezinho',
+                'description' => 'Conezinho',
                 'price' => 4.75,
                 'thumbnail' => 'cone.jpg',
                 'created_at' => now(),
