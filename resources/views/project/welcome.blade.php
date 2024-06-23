@@ -9,7 +9,7 @@
         <div class="col-lg-6 col-md-8 mx-auto">
           <p class="lead text-body-secondary">Transforme seu inventário em inteligência: gestão de produtos simplificada.</p>
           <p>
-            <a href="{{Route("product.create")}}" class="btn btn-primary my-2">Novo Produto</a>
+            <a href="{{ Route("product.create") }}" class="btn btn-primary my-2">Novo Produto</a>
           </p>
         </div>
       </div>
@@ -27,10 +27,8 @@
                   <p class="card-text">{{ $product->description }}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      @guest
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                      @endguest
+                      <a href="{{ Route("product.edit", $product->id) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
                     </div>
                     <small class="text-muted">R$ {{ number_format($product->price, 2, ',', '.') }}</small>
                   </div>
