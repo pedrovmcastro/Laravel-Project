@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+
     public function index()
     {
         $products = Product::paginate(20);  
@@ -16,6 +18,7 @@ class ProductController extends Controller
 
         return view('project.admin.products.index', compact('products'));
     }
+
 
     public function store(Request $request)
     {
@@ -44,38 +47,62 @@ class ProductController extends Controller
         return redirect()->route('welcome')->with('success', 'Produto criado com sucesso.');
     }
 
-    public function edit(Product $product)
+
+    public function edit($id)
     {
+        $product = Product::findOrFail($id);
         return view('project.admin.products.edit', compact('product'));
     }
 
-    public function update(Request $request, Product $product)
+
+    public function update(Request $request, $id)
     {
+        
+        $product = Product::findOrFail($id);
+        
         $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+            'name' => 'required|string|max:100',
+            'description' => 'nullable|string',
             'price' => 'required|numeric',
-            'thumbnail' => 'image|nullable',
+            'thumbnail' => 'image|nullable|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $thumbnailPath = $product->thumbnail;
-        if($request->hasFile('thumbnail')) {
-            $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
+        // Lidar com o upload da imagem
+        if ($request->hasFile('thumbnail')) {
+            // Apagar a imagem antiga
+            if ($product->thumbnail) {
+                Storage::delete('public/thumbnails/' . $product->thumbnail);
+            }
+            $filename = time() . '.' . $request->thumbnail->extension();
+            $request->thumbnail->move(public_path('thumbnails'), $filename);
+            $product->thumbnail = $filename;
         }
 
+        // Atualizar o produto
         $product->update([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'thumbnail' => $thumbnailPath,
+            'thumbnail' => $product->thumbnail,
         ]);
 
-        return redirect()->route('products.index');
+        return redirect()->route('welcome')->with('success', 'Produto atualizado com sucesso.');
     }
 
-    public function destroy(Product $product)
+
+    public function destroy($id)
     {
+        $product = Product::findOrFail($id);
+
+        // Deleta a imagem do servidor, se existir
+        if ($product->thumbnail) {
+            Storage::delete('public/thumbnails/' . $product->thumbnail);
+        }
+
+        // Deleta o produto do banco de dados
         $product->delete();
-        return redirect()->route('products.index');
+
+        return redirect()->route('welcome')->with('success', 'Produto deletado com sucesso');
+
     }
 }

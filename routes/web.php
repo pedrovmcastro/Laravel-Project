@@ -35,3 +35,7 @@ Route::get('/products/create', function () {
 Route::post('/products', [ProductController::class, 'store'])->middleware(['auth', 'verified'])->name('product.store');
 
 Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->middleware(['auth', 'verified'])->name('product.edit');
+
+Route::put('/products/{id}', [ProductController::class, 'update'])->middleware(['auth', 'verified'])->name('product.update');
+
+Route::delete('/products/{id}', [ProductController::class, 'destroy'])->middleware(['auth', 'verified'])->name('product.destroy');
