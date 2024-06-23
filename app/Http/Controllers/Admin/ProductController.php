@@ -17,21 +17,31 @@ class ProductController extends Controller
         return view('project.admin.products.index', compact('products'));
     }
 
-    public function create()
-    {
-        return view('project.admin.products.create');
-    }
-
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+            'name' => 'required|string|max:100',
+            'description' => 'nullable|string',
             'price' => 'required|numeric',
-            'thumbnail' => 'image|nullable',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        return redirect()->route('products.index');
+        // Lidar com o upload da imagem
+        $filename = null;
+        if ($request->hasFile('thumbnail')) {
+            $filename = time() . '.' . $request->thumbnail->extension();
+            $request->thumbnail->move(public_path('thumbnails'), $filename);
+        }
+
+        // Criar novo produto
+        Product::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'thumbnail' => $filename,
+        ]);
+
+        return redirect()->route('welcome')->with('success', 'Produto criado com sucesso.');
     }
 
     public function edit(Product $product)
