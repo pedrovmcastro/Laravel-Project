@@ -26,3 +26,7 @@ Route::get('/', function () {
 });
 
 Route::get('/exit', [AuthenticatedSessionController::class, 'destroy'])->name('exit');
+
+Route::get('/create', function () {
+    return view('project.create');
+})->middleware(['auth', 'verified'])->name('product.create');
